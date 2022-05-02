@@ -38,33 +38,80 @@ public class quickSortCompare {
         }
     }
 
-    // the main function that can be compare multi and single threading in quicksort
-    public static void main(String[] args) throws Exception {
-        //test array for singlethreading
-        //create array over 100 thresold
-        int[] arr_s=new int[120];
 
-        for(int i=0;i<arr_s.length;i++){
-            arr_s[i]=new Random().nextInt(80);
+
+
+    public static void main(String[] args) {
+
+        int[] arr = {17,19,65,54,57,24, 64, 95, 82, 12, 32, 63,22,10,1,2,8 };
+
+        //quick sort single-threading
+        QuickSortSingleThreading q1 = new QuickSortSingleThreading();
+        // Print shorted elements
+        q1.quickSort(arr,0,arr.length-1);
+        System.out.print("quickSort SingleThreading: " );
+        for (int i = 0; i < arr.length; i++){
+            System.out.print(arr[i] + " ");
         }
 
-        //test array for multithreading
-        //create array over 100 thresold
-        int[] arr_m = new int[105]; 
-        for(int i=0;i<arr_m.length;i++){
-            arr_m[i]=new Random().nextInt(80);
-        }
 
-        //call singlethreading quicksort if threshold>100
-        completeProgram_single(arr_s);
-        for (int i = 0; i < arr_s.length; i++){
-            System.out.print(arr_s[i] + " ");
-        }
+        //quick sort multi-threading
+        ForkJoinPool pool = ForkJoinPool.commonPool();
+        pool.invoke(new QuickSortMutliThreading(0, arr.length - 1, arr));
 
-        //call multithreading quicksort if threshold>100
-        completeProgram_multi(arr_m);
-        for (int i = 0; i < arr_m.length; i++){
-            System.out.print(arr_m[i] + " ");
-        }
+        System.out.print("\nquickSort MultiThreading: " );
+        for (int i = 0; i < arr.length; i++)
+            System.out.print(arr[i] + " ");
     }
-}
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//
+
+
+
+
+//    // the main function that can compare multi and single threading in quicksort
+//    public static void main(String[] args) throws Exception {
+//        //test array for singlethreading
+//        //create array over 100 thresold
+//        int[] arr_s=new int[120];
+//
+//        for(int i=0;i<arr_s.length;i++){
+//            arr_s[i]=new Random().nextInt(80);
+//        }
+//
+//        //test array for multithreading
+//        //create array over 100 thresold
+//        int[] arr_m = new int[105];
+//        for(int i=0;i<arr_m.length;i++){
+//            arr_m[i]=new Random().nextInt(80);
+//        }
+//
+//        //call singlethreading quicksort if threshold>100
+//        completeProgram_single(arr_s);
+//        for (int i = 0; i < arr_s.length; i++){
+//            System.out.print(arr_s[i] + " ");
+//        }
+//
+//        //call multithreading quicksort if threshold>100
+//        completeProgram_multi(arr_m);
+//        for (int i = 0; i < arr_m.length; i++){
+//            System.out.print(arr_m[i] + " ");
+//        }
+//    }

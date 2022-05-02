@@ -14,9 +14,11 @@ public class QuickSortSingleThreading{
    smaller to left of pivot and all greater elements to right */
     private int partition(int arr[], int left, int right){
       int i = left, j = right;
-      int pivot = arr[(left + right) / 2]; //assign the center as pivot
-     
-      while (i <= j) {
+//      int pivot = arr[(left + right) / 2]; //assign the center as pivot
+        int pivot = arr[left + (right-left) / 2]; //assign the center as pivot
+
+
+        while (i <= j) {
             while (arr[i] < pivot)
                   i++;
 
@@ -51,5 +53,7 @@ public void quickSort(int arr[], int start, int end) {
             System.out.print(arr[i] + " ");
         }
     }
+
+
 }
 
