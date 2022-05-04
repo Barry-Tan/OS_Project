@@ -4,16 +4,16 @@ import java.util.Random;
 public class quickSortCompare {
 
     //function that 1. test threshould 2.if greater than 100, use single thread quicksort else use insertion sort
-    static void completeProgram_single(int[] arr){
+    static void completeProgram_single(int[] arr) {
 
-        int threshold =100;
+        int threshold = 100;
 
-        if(arr.length>threshold){
+        if (arr.length > threshold) {
             System.out.println("\nOver 100 elements, singlethreading quicksort implement:");
             QuickSortSingleThreading qs = new QuickSortSingleThreading();
-            qs.quickSort(arr, 0, arr.length-1);
+            qs.quickSort(arr, 0, arr.length - 1);
 
-        }else{
+        } else {
             System.out.println("\nWithin 100 elements, insertion sort implement:");
             InsertionSort is = new InsertionSort();
             is.sort(arr);
@@ -21,17 +21,17 @@ public class quickSortCompare {
     }
 
     //function that 1. test threshould 2.if greater than 100, use multi-thread quicksort else use insertion sort
-    static void completeProgram_multi(int[] arr){
+    static void completeProgram_multi(int[] arr) {
 
-        int threshold =100;
+        int threshold = 100;
 
-        if(arr.length>threshold){
+        if (arr.length > threshold) {
             System.out.println("\n\nOver 100 elements, mutithreading quicksort implement:");
             ForkJoinPool pool = ForkJoinPool.commonPool();
             // Start the thread in fork
             pool.invoke(new QuickSortMutliThreading(0, arr.length - 1, arr));
 
-        }else{
+        } else {
             System.out.println("\n\nWithin 100 elements, insertion sort implement:");
             InsertionSort is = new InsertionSort();
             is.sort(arr);
@@ -39,79 +39,81 @@ public class quickSortCompare {
     }
 
 
+    // the main function that can compare multi and single threading in quicksort
+    public static void main(String[] args) throws Exception {
+        //test array for singlethreading
+        //create array over 100 thresold
+        int[] arr_s = new int[120];
 
-
-    public static void main(String[] args) {
-
-        int[] arr = {17,19,65,54,57,24, 64, 95, 82, 12, 32, 63,22,10,1,2,8 };
-
-        //quick sort single-threading
-        QuickSortSingleThreading q1 = new QuickSortSingleThreading();
-        // Print shorted elements
-        q1.quickSort(arr,0,arr.length-1);
-        System.out.print("quickSort SingleThreading: " );
-        for (int i = 0; i < arr.length; i++){
-            System.out.print(arr[i] + " ");
+        for (int i = 0; i < arr_s.length; i++) {
+            arr_s[i] = new Random().nextInt(80);
         }
 
+        //test array for multithreading
+        //create array over 100 thresold
+        int[] arr_m = new int[105];
+        for (int i = 0; i < arr_m.length; i++) {
+            arr_m[i] = new Random().nextInt(80);
+        }
 
-        //quick sort multi-threading
-        ForkJoinPool pool = ForkJoinPool.commonPool();
-        pool.invoke(new QuickSortMutliThreading(0, arr.length - 1, arr));
+        //call singlethreading quicksort if threshold>100
+        completeProgram_single(arr_s);
+        for (int i = 0; i < arr_s.length; i++) {
+            System.out.print(arr_s[i] + " ");
+        }
 
-        System.out.print("\nquickSort MultiThreading: " );
-        for (int i = 0; i < arr.length; i++)
-            System.out.print(arr[i] + " ");
+        //call multithreading quicksort if threshold>100
+        completeProgram_multi(arr_m);
+        for (int i = 0; i < arr_m.length; i++) {
+            System.out.print(arr_m[i] + " ");
+        }
     }
-
-
-    }
-
-
-
-
-
-
-
-
-
-
-
-
+}
 
 
 
 //
-
-
-
-
-//    // the main function that can compare multi and single threading in quicksort
-//    public static void main(String[] args) throws Exception {
-//        //test array for singlethreading
-//        //create array over 100 thresold
-//        int[] arr_s=new int[120];
+//    public static void main(String[] args) {
 //
-//        for(int i=0;i<arr_s.length;i++){
-//            arr_s[i]=new Random().nextInt(80);
+//        int[] arr = {17,19,65,54,57,24, 64, 95, 82, 12, 32, 63,22,10,1,2,8 };
+//
+//
+//        //quick sort single-threading
+//        QuickSortSingleThreading q1 = new QuickSortSingleThreading();
+//        // Print shorted elements
+//        q1.quickSort(arr,0,arr.length-1);
+//        System.out.print("quickSort SingleThreading: " );
+//        for (int i = 0; i < arr.length; i++){
+//            System.out.print(arr[i] + " ");
 //        }
 //
-//        //test array for multithreading
-//        //create array over 100 thresold
-//        int[] arr_m = new int[105];
-//        for(int i=0;i<arr_m.length;i++){
-//            arr_m[i]=new Random().nextInt(80);
-//        }
 //
-//        //call singlethreading quicksort if threshold>100
-//        completeProgram_single(arr_s);
-//        for (int i = 0; i < arr_s.length; i++){
-//            System.out.print(arr_s[i] + " ");
-//        }
+//        //quick sort multi-threading
+//        ForkJoinPool pool = ForkJoinPool.commonPool();
+//        pool.invoke(new QuickSortMutliThreading(0, arr.length - 1, arr));
 //
-//        //call multithreading quicksort if threshold>100
-//        completeProgram_multi(arr_m);
-//        for (int i = 0; i < arr_m.length; i++){
-//            System.out.print(arr_m[i] + " ");
-//        }
+//        System.out.print("\nquickSort MultiThreading: " );
+//        for (int i = 0; i < arr.length; i++)
+//            System.out.print(arr[i] + " ");
 //    }
+
+
+//    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//
+
+
