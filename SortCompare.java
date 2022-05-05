@@ -1,7 +1,7 @@
 import java.util.concurrent.ForkJoinPool;
 import java.util.Random;
 
-public class quickSortCompare {
+public class SortCompare {
 
     //function that 1. test threshould 2.if greater than 100, use single thread quicksort else use insertion sort
     static void completeProgram_single(int[] arr) {
@@ -12,6 +12,8 @@ public class quickSortCompare {
             System.out.println("\nOver 100 elements, singlethreading quicksort implement:");
             QuickSortSingleThreading qs = new QuickSortSingleThreading();
             qs.quickSort(arr, 0, arr.length - 1);
+
+
 
         } else {
             System.out.println("\nWithin 100 elements, insertion sort implement:");
@@ -57,6 +59,7 @@ public class quickSortCompare {
         }
 
         //call singlethreading quicksort if threshold>100
+
         completeProgram_single(arr_s);
         for (int i = 0; i < arr_s.length; i++) {
             System.out.print(arr_s[i] + " ");
@@ -71,34 +74,6 @@ public class quickSortCompare {
 }
 
 
-
-//
-//    public static void main(String[] args) {
-//
-//        int[] arr = {17,19,65,54,57,24, 64, 95, 82, 12, 32, 63,22,10,1,2,8 };
-//
-//
-//        //quick sort single-threading
-//        QuickSortSingleThreading q1 = new QuickSortSingleThreading();
-//        // Print shorted elements
-//        q1.quickSort(arr,0,arr.length-1);
-//        System.out.print("quickSort SingleThreading: " );
-//        for (int i = 0; i < arr.length; i++){
-//            System.out.print(arr[i] + " ");
-//        }
-//
-//
-//        //quick sort multi-threading
-//        ForkJoinPool pool = ForkJoinPool.commonPool();
-//        pool.invoke(new QuickSortMutliThreading(0, arr.length - 1, arr));
-//
-//        System.out.print("\nquickSort MultiThreading: " );
-//        for (int i = 0; i < arr.length; i++)
-//            System.out.print(arr[i] + " ");
-//    }
-
-
-//    }
 
 
 
